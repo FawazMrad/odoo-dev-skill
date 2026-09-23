@@ -175,6 +175,12 @@ template). Rules:
 - External Python libs: add to repo root `requirements.txt` (Odoo.sh installs it), plus
   `external_dependencies` in the manifest.
 
+### Conventions
+Follow `references/oca-guidelines.md`: model attribute order, method and field naming, import
+order, no raw SQL or `cr.commit()`, manifest versioning, hooks in `hooks.py`. Its naming
+conventions (XML IDs, file names, module names) are opt-in: match what the repo already does,
+and mention the difference once if the repo doesn't follow them.
+
 ### Comments
 Short, human, explain *why*:
 - `# customer wants the discount locked after confirm`
@@ -314,3 +320,4 @@ Update it:
 - right after receiving shell output or a customer/implementer answer.
 
 Keep it a compact summary, not a transcript. Hooks setup: `hooks/README.md`.
+Conventions: `references/oca-guidelines.md`.
