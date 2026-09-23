@@ -1,0 +1,14 @@
+#!/bin/sh
+# odoo-dev: strip AI attribution lines from commit messages
+msg="$1"
+tmp="$msg.odoo-dev.tmp"
+grep -v -i \
+  -e '^co-authored-by:.*claude' \
+  -e 'noreply@anthropic\.com' \
+  -e 'generated with \[\?claude code' \
+  -e 'claude\.ai/code' \
+  "$msg" > "$tmp"
+# drop trailing empty lines left behind
+awk 'NF {for (i = 0; i < blank; i++) print ""; blank = 0; print; next} {blank++}' "$tmp" > "$msg"
+rm -f "$tmp"
+exit 0
